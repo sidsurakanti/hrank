@@ -135,8 +135,9 @@ def train_epochs(model, loader, epochs, masks=()):
 
 
 class RankAccumulator:
-    """Running average of per-channel matrix rank across batches, matching
-    HRank's update rule: feature_result = (feature_result*total + c) / total."""
+    """
+    Running average of per-channel matrix rank across batches
+    """
 
     def __init__(self):
         self.sum_rank: torch.Tensor | None = None

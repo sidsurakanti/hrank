@@ -1,7 +1,7 @@
 [project]
 name = "hrank"
 version = "0.1.0"
-description = "Add your description here"
+description = "HRank filter pruning reproduction on CIFAR-10 (VGG-16-bn, ResNet-56)"
 requires-python = ">=3.12"
 dependencies = [
     "numpy>=2.5.3",
