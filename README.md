@@ -9,7 +9,11 @@ Reproducing [HRank: Filter Pruning using High-Rank Feature Map](https://arxiv.or
 | VGG-16-bn | 91.25% | 92.34% | 1.1pp |
 | ResNet-56 | 93.11% | 93.17% | 0.06pp |
 
+With 0 finetune epochs both nets collapse to chance (VGG 10.00%, ResNet 11.81%).
+
 Full log and notes on the gaps: `RESULTS.md`.
+
+FLOPs and the comparison with HRel (sibling repo `../hrel`): `../hrel/RESULTS.md`.
 
 ## The method
 
@@ -53,6 +57,6 @@ See `hrank_core.py`'s module docstring.
 ```bash
 uv run python baseline_eval.py   # sanity check: checkpoint loads correctly
 uv run python toy.py             # sanity check: the mechanism works
-uv run python vgg_prune.py       # ~30 min on an RTX 4060
+uv run python vgg_prune.py       # ~30 min on an RTX 4060 (FINETUNE_EPOCHS=0 to skip finetuning)
 uv run python resnet_prune.py    # ~2-3 hours, 55 layers x 15 epochs
 ```

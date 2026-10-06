@@ -11,6 +11,8 @@ instead we reach each activation from its neighboring layer:
     output is exactly conv2's post-residual-relu activation)
 """
 
+import os
+
 import torch
 import hrank_core as core
 
@@ -19,7 +21,7 @@ ARCH = "cifar10_resnet56"
 # HRank's published compress-rate schedule for resnet_56 (github.com/lmbxmu/HRank/README.md)
 COMPRESS_RATE = [0.1] + [0.60] * 35 + [0.0] * 2 + [0.6] * 6 + [0.4] * 3 + [0.1, 0.4] * 4
 RANK_BATCHES = 10
-FINETUNE_EPOCHS = 15  # HRank's own default epochs per layer
+FINETUNE_EPOCHS = int(os.environ.get("FINETUNE_EPOCHS", 15))  # HRank's own default epochs per layer
 
 
 def main():

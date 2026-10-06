@@ -6,6 +6,8 @@ only 12 of VGG-16's 13 conv layers are pruned
 the last conv (right before the classifier) is left untouched in HRank's own vgg.py/mask.py.
 """
 
+import os
+
 import torch
 import hrank_core as core
 
@@ -34,7 +36,7 @@ VGG16_CFG = [
 # from HRank repo's readme
 COMPRESS_RATE = ([0.95] + [0.5] * 6 + [0.9] * 4 + [0.8] * 2)[:12]
 RANK_BATCHES = 10  # batches of (augmented) train data used to estimate rank
-FINETUNE_EPOCHS = 15  # HRank's own default epochs per layer
+FINETUNE_EPOCHS = int(os.environ.get("FINETUNE_EPOCHS", 15))  # HRank's own default epochs per layer
 
 
 def conv_bn_relu_indices(cfg):
